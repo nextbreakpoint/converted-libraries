@@ -16,19 +16,93 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>unpack-libraries</id>
+                        <id>unpack-classes</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>unpack-dependencies</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <configuration>
-                            <includeGroupIds>io.reactivex.rxjava2</includeGroupIds>
-                            <includeArtifactIds>rxjavafx</includeArtifactIds>
+                            <artifactItems>
+                                <item>
+                                    <groupId>io.reactivex.rxjava2</groupId>
+                                    <artifactId>rxjavafx</artifactId>
+                                    <version>${rxjavafx.version}</version>
+                                </item>
+                            </artifactItems>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                             <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>io.reactivex.rxjava2</groupId>
+                                    <artifactId>rxjavafx</artifactId>
+                                    <version>${rxjavafx.version}</version>
+                                    <classifier>javadoc</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>io.reactivex.rxjava2</groupId>
+                                    <artifactId>rxjavafx</artifactId>
+                                    <version>${rxjavafx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>archive-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>archive-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -63,6 +137,8 @@
                                             exports io.reactivex.rxjavafx.sources;
                                             exports io.reactivex.rxjavafx.subscriptions;
                                             exports io.reactivex.rxjavafx.transformers;
+                                            requires transitive javafx.controls;
+                                            requires transitive com.nextbreakpoint.libraries.rxjava2;
                                         }
                                     </moduleInfoSource>
                                 </module>
@@ -75,9 +151,14 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>io.reactivex.rxjava2</groupId>
-            <artifactId>rxjavafx</artifactId>
-            <version>${rxjavafx.version}</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${openjfx.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.libraries.rxjava2</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

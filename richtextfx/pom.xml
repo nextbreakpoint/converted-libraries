@@ -9,26 +9,100 @@
     <artifactId>com.nextbreakpoint.libraries.richtextfx</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <richtextfx.version>0.11.2</richtextfx.version>
+        <richtextfx.version>0.11.3</richtextfx.version>
     </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>unpack-libraries</id>
+                        <id>unpack-classes</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>unpack-dependencies</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <configuration>
-                            <includeGroupIds>org.fxmisc.richtext</includeGroupIds>
-                            <includeArtifactIds>richtextfx</includeArtifactIds>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                </item>
+                            </artifactItems>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                             <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                    <classifier>javadoc</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>archive-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>archive-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -61,6 +135,9 @@
                                             exports org.fxmisc.richtext.event;
                                             exports org.fxmisc.richtext.model;
                                             exports org.fxmisc.richtext.util;
+                                            requires transitive com.nextbreakpoint.libraries.flowless;
+                                            requires transitive com.nextbreakpoint.libraries.undofx;
+                                            requires transitive com.nextbreakpoint.libraries.wellbehavedfx;
                                         }
                                     </moduleInfoSource>
                                 </module>
@@ -73,9 +150,19 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.fxmisc.richtext</groupId>
-            <artifactId>richtextfx</artifactId>
-            <version>${richtextfx.version}</version>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.libraries.flowless</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.libraries.undofx</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.nextbreakpoint</groupId>
+            <artifactId>com.nextbreakpoint.libraries.wellbehavedfx</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

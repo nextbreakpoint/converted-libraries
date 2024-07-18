@@ -5,8 +5,7 @@
     <artifactId>com.nextbreakpoint.libraries</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>NextBreakpoint Libraries</name>
-    <description>Libraries is an umbrella project for converting to modules some Java libraries which originally are not distributed as modules</description>
+    <description>Libraries is an umbrella project for converting to modules some Java libraries which are not distributed as modules</description>
     <url>https://github.com/nextbreakpoint/libraries</url>
     <licenses>
         <license>
@@ -28,28 +27,30 @@
     <modules>
         <module>antlr4</module>
         <module>common-math3</module>
+        <module>reactive-streams</module>
         <module>rxjava2</module>
         <module>rxjavafx</module>
+        <module>reactfx</module>
         <module>flowless</module>
         <module>undofx</module>
         <module>wellbehavedfx</module>
-        <module>reactfx</module>
         <module>richtextfx</module>
     </modules>
     <properties>
         <java.version>21</java.version>
         <java.release>21</java.release>
         <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-jar-plugin.version>3.4.1</maven-jar-plugin.version>
-        <maven-compiler-plugin.version>3.12.0</maven-compiler-plugin.version>
-        <maven-toolchains-plugin.version>3.1.0</maven-toolchains-plugin.version>
-        <maven-dependency-plugin.version>3.6.1</maven-dependency-plugin.version>
-        <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
-        <moditect-maven-plugin.version>1.0.0.Final</moditect-maven-plugin.version>
-        <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+        <openjfx.version>22.0.1</openjfx.version>
+        <maven-jar-plugin.version>3.4.2</maven-jar-plugin.version>
+        <maven-compiler-plugin.version>3.13.0</maven-compiler-plugin.version>
+        <maven-toolchains-plugin.version>3.2.0</maven-toolchains-plugin.version>
+        <maven-dependency-plugin.version>3.7.1</maven-dependency-plugin.version>
+        <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
+        <moditect-maven-plugin.version>1.2.2.Final</moditect-maven-plugin.version>
+        <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
     </properties>
     <build>
         <pluginManagement>
@@ -61,7 +62,7 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-jat-plugin</artifactId>
+                    <artifactId>maven-jar-plugin</artifactId>
                     <version>${maven-jar-plugin.version}</version>
                 </plugin>
                 <plugin>

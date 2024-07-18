@@ -16,19 +16,93 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>unpack-libraries</id>
+                        <id>unpack-classes</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>unpack-dependencies</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <configuration>
-                            <includeGroupIds>org.reactfx</includeGroupIds>
-                            <includeArtifactIds>reactfx</includeArtifactIds>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.reactfx</groupId>
+                                    <artifactId>reactfx</artifactId>
+                                    <version>${reactfx.version}</version>
+                                </item>
+                            </artifactItems>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                             <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.reactfx</groupId>
+                                    <artifactId>reactfx</artifactId>
+                                    <version>${reactfx.version}</version>
+                                    <classifier>javadoc</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.reactfx</groupId>
+                                    <artifactId>reactfx</artifactId>
+                                    <version>${reactfx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>archive-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>archive-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -66,6 +140,7 @@
                                             exports org.reactfx.inhibeans.value;
                                             exports org.reactfx.util;
                                             exports org.reactfx.value;
+                                            requires transitive javafx.controls;
                                         }
                                     </moduleInfoSource>
                                 </module>
@@ -78,9 +153,9 @@
     </build>
     <dependencies>
         <dependency>
-            <groupId>org.reactfx</groupId>
-            <artifactId>reactfx</artifactId>
-            <version>${reactfx.version}</version>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>${openjfx.version}</version>
         </dependency>
     </dependencies>
 </project>

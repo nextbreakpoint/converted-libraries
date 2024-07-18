@@ -6,10 +6,10 @@
         <artifactId>com.nextbreakpoint.libraries</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>com.nextbreakpoint.libraries.flowless</artifactId>
+    <artifactId>com.nextbreakpoint.libraries.reactive-streams</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <flowless.version>0.7.3</flowless.version>
+        <reactive-streams.version>1.0.3</reactive-streams.version>
     </properties>
     <build>
         <plugins>
@@ -26,13 +26,13 @@
                         <configuration>
                             <artifactItems>
                                 <item>
-                                    <groupId>org.fxmisc.flowless</groupId>
-                                    <artifactId>flowless</artifactId>
-                                    <version>${flowless.version}</version>
+                                    <groupId>org.reactivestreams</groupId>
+                                    <artifactId>reactive-streams</artifactId>
+                                    <version>${reactive-streams.version}</version>
                                 </item>
                             </artifactItems>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
-<!--                            <excludes>**/*.MF</excludes>-->
+                            <excludes>**/*.MF</excludes>
                         </configuration>
                     </execution>
                     <execution>
@@ -44,9 +44,9 @@
                         <configuration>
                             <artifactItems>
                                 <item>
-                                    <groupId>org.fxmisc.flowless</groupId>
-                                    <artifactId>flowless</artifactId>
-                                    <version>${flowless.version}</version>
+                                    <groupId>org.reactivestreams</groupId>
+                                    <artifactId>reactive-streams</artifactId>
+                                    <version>${reactive-streams.version}</version>
                                     <classifier>javadoc</classifier>
                                 </item>
                             </artifactItems>
@@ -62,9 +62,9 @@
                         <configuration>
                             <artifactItems>
                                 <item>
-                                    <groupId>org.fxmisc.flowless</groupId>
-                                    <artifactId>flowless</artifactId>
-                                    <version>${flowless.version}</version>
+                                    <groupId>org.reactivestreams</groupId>
+                                    <artifactId>reactive-streams</artifactId>
+                                    <version>${reactive-streams.version}</version>
                                     <classifier>sources</classifier>
                                 </item>
                             </artifactItems>
@@ -126,13 +126,12 @@
                                 <module>
                                     <artifact>
                                         <groupId>com.nextbreakpoint</groupId>
-                                        <artifactId>com.nextbreakpoint.libraries.flowless</artifactId>
+                                        <artifactId>com.nextbreakpoint.libraries.reactive-streams</artifactId>
                                         <version>${project.version}</version>
                                     </artifact>
                                     <moduleInfoSource>
-                                        module com.nextbreakpoint.libraries.flowless {
-                                            exports org.fxmisc.flowless;
-                                            requires transitive com.nextbreakpoint.libraries.reactfx;
+                                        module com.nextbreakpoint.libraries.reactive.streams {
+                                            exports org.reactivestreams;
                                         }
                                     </moduleInfoSource>
                                 </module>
@@ -143,11 +142,4 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>com.nextbreakpoint</groupId>
-            <artifactId>com.nextbreakpoint.libraries.reactfx</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>
