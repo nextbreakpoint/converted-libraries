@@ -1,0 +1,84 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.nextbreakpoint</groupId>
+        <artifactId>com.nextbreakpoint.libraries</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>com.nextbreakpoint.libraries.antlr4</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <antlr4.version>4.13.1</antlr4.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>unpack-libraries</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>org.antlr</includeGroupIds>
+                            <includeArtifactIds>antlr4-runtime</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                            <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <version>${moditect-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-module-info</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <modules>
+                                <module>
+                                    <artifact>
+                                        <groupId>com.nextbreakpoint</groupId>
+                                        <artifactId>com.nextbreakpoint.libraries.antlr4</artifactId>
+                                        <version>${project.version}</version>
+                                    </artifact>
+                                    <moduleInfoSource>
+                                        module com.nextbreakpoint.libraries.antlr4 {
+                                            exports org.antlr.v4.runtime;
+                                            exports org.antlr.v4.runtime.atn;
+                                            exports org.antlr.v4.runtime.dfa;
+                                            exports org.antlr.v4.runtime.misc;
+                                            exports org.antlr.v4.runtime.tree;
+                                            exports org.antlr.v4.runtime.tree.pattern;
+                                            exports org.antlr.v4.runtime.tree.xpath;
+                                        }
+                                    </moduleInfoSource>
+                                </module>
+                            </modules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
+            <version>${antlr4.version}</version>
+        </dependency>
+    </dependencies>
+</project>

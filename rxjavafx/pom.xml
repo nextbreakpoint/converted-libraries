@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.nextbreakpoint</groupId>
+        <artifactId>com.nextbreakpoint.libraries</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>com.nextbreakpoint.libraries.rxjavafx</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <rxjavafx.version>2.2.2</rxjavafx.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${maven-dependency-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>unpack-libraries</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <includeGroupIds>io.reactivex.rxjava2</includeGroupIds>
+                            <includeArtifactIds>rxjavafx</includeArtifactIds>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                            <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <version>${moditect-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-module-info</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <modules>
+                                <module>
+                                    <artifact>
+                                        <groupId>com.nextbreakpoint</groupId>
+                                        <artifactId>com.nextbreakpoint.libraries.rxjavafx</artifactId>
+                                        <version>${project.version}</version>
+                                    </artifact>
+                                    <moduleInfoSource>
+                                        module com.nextbreakpoint.libraries.rxjavafx {
+                                            exports io.reactivex.rxjavafx.observables;
+                                            exports io.reactivex.rxjavafx.observers;
+                                            exports io.reactivex.rxjavafx.schedulers;
+                                            exports io.reactivex.rxjavafx.sources;
+                                            exports io.reactivex.rxjavafx.subscriptions;
+                                            exports io.reactivex.rxjavafx.transformers;
+                                        }
+                                    </moduleInfoSource>
+                                </module>
+                            </modules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>io.reactivex.rxjava2</groupId>
+            <artifactId>rxjavafx</artifactId>
+            <version>${rxjavafx.version}</version>
+        </dependency>
+    </dependencies>
+</project>
