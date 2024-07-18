@@ -132,11 +132,11 @@
                 </plugins>
             </build>
             <distributionManagement>
-                <snapshotRepository>
+                <repository>
                     <id>ossrh</id>
                     <name>OSSRH</name>
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-                </snapshotRepository>
+                </repository>
             </distributionManagement>
         </profile>
     </profiles>
