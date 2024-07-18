@@ -50,9 +50,6 @@
         <maven-gpg-plugin.version>3.1.0</maven-gpg-plugin.version>
         <moditect-maven-plugin.version>1.0.0.Final</moditect-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
-        <nexus.host>https://oss.sonatype.org</nexus.host>
-        <nexus.url>https://oss.sonatype.org/content/repositories/snapshots</nexus.url>
-        <nexus.autoreleaseafterclose>true</nexus.autoreleaseafterclose>
     </properties>
     <build>
         <plugins>
@@ -128,8 +125,8 @@
                         <extensions>true</extensions>
                         <configuration>
                             <serverId>ossrh</serverId>
-                            <nexusUrl>${nexus.host}</nexusUrl>
-                            <autoReleaseAfterClose>${nexus.autoreleaseafterclose}</autoReleaseAfterClose>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -137,7 +134,8 @@
             <distributionManagement>
                 <snapshotRepository>
                     <id>ossrh</id>
-                    <url>${nexus.url}</url>
+                    <name>OSSRH</name>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
