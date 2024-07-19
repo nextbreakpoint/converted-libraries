@@ -9,26 +9,100 @@
     <artifactId>com.nextbreakpoint.libraries.common-math3</artifactId>
     <packaging>jar</packaging>
     <properties>
-        <commonmath3.version>3.6.1</commonmath3.version>
+        <common-math3.version>3.6.1</common-math3.version>
     </properties>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
-                <version>${maven-dependency-plugin.version}</version>
                 <executions>
                     <execution>
-                        <id>unpack-libraries</id>
+                        <id>unpack-classes</id>
                         <phase>prepare-package</phase>
                         <goals>
-                            <goal>unpack-dependencies</goal>
+                            <goal>unpack</goal>
                         </goals>
                         <configuration>
-                            <includeGroupIds>org.apache.commons</includeGroupIds>
-                            <includeArtifactIds>commons-math3</includeArtifactIds>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.apache.commons</groupId>
+                                    <artifactId>commons-math3</artifactId>
+                                    <version>${common-math3.version}</version>
+                                </item>
+                            </artifactItems>
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                             <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.apache.commons</groupId>
+                                    <artifactId>commons-math3</artifactId>
+                                    <version>${common-math3.version}</version>
+                                    <classifier>javadoc</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.apache.commons</groupId>
+                                    <artifactId>commons-math3</artifactId>
+                                    <version>${common-math3.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>archive-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>archive-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
                         </configuration>
                     </execution>
                 </executions>
@@ -142,11 +216,4 @@
             </plugin>
         </plugins>
     </build>
-    <dependencies>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-            <version>${commonmath3.version}</version>
-        </dependency>
-    </dependencies>
 </project>

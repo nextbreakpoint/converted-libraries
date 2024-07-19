@@ -50,7 +50,7 @@
                                     <classifier>javadoc</classifier>
                                 </item>
                             </artifactItems>
-                            <outputDirectory>${project.build.directory}/download/javadoc</outputDirectory>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
                         </configuration>
                     </execution>
                     <execution>
@@ -68,7 +68,7 @@
                                     <classifier>sources</classifier>
                                 </item>
                             </artifactItems>
-                            <outputDirectory>${project.build.directory}/download/sources</outputDirectory>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
                         </configuration>
                     </execution>
                 </executions>
@@ -78,14 +78,14 @@
                 <artifactId>maven-jar-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>archive-javadocs</id>
+                        <id>archive-javadoc</id>
                         <phase>prepare-package</phase>
                         <goals>
                             <goal>jar</goal>
                         </goals>
                         <configuration>
                             <classifier>javadoc</classifier>
-                            <classesDirectory>${project.build.directory}/download/javadoc</classesDirectory>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
                             <includes>
                                 <include>**/*</include>
                             </includes>
@@ -99,7 +99,7 @@
                         </goals>
                         <configuration>
                             <classifier>sources</classifier>
-                            <classesDirectory>${project.build.directory}/download/sources</classesDirectory>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
                             <includes>
                                 <include>**/*</include>
                             </includes>
