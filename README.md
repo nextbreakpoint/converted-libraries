@@ -1,6 +1,8 @@
 # NextBreakpoint Libraries
 
-NextBreakpoint Libraries is an umbrella project for converting to modules some Java libraries which originally are not distributed as modules.
+NextBreakpoint Libraries is an umbrella project for converting to Java modules some Java libraries which are not distributed as modules.
+This is a temporary workaround until the author of the converted library releases a new version which is already a Java module. 
+We don't intend to maintain a modified version of the library, however we want to enable people to use the library as module.
 
 
 ## License
@@ -40,10 +42,11 @@ NextBreakpoint Libraries contain copy of binaries files from the following open 
     ANTLR4
     Apache Common Math3
     ReactFX
-    RichTextFX 
+    Flowless
     UndoFX 
     WellbehavedFX
-    Flowless
+    RichTextFX 
+    Reactive Streams
     RxJava2
     RxJavaFX
 
@@ -52,7 +55,7 @@ NextBreakpoint Libraries contain copy of binaries files from the following open 
 
 NextBreakpoint Libraries are available in Maven Central Repository and [GitHub](https://github.com/nextbreakpoint/common).
 
-If you are using Maven, add one or more of the following dependencies in your POM:
+If you are using Maven, this is the list of the libraries which you can add to your POM:
 
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
@@ -62,6 +65,11 @@ If you are using Maven, add one or more of the following dependencies in your PO
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
         <artifactId>com.nextbreakpoint.common-math3</artifactId>
+        <version>1.0.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.nextbreakpoint</groupId>
+        <artifactId>com.nextbreakpoint.reactive-streams</artifactId>
         <version>1.0.0</version>
     </dependency>
     <dependency>
@@ -81,7 +89,7 @@ If you are using Maven, add one or more of the following dependencies in your PO
     </dependency>
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.richtextfx</artifactId>
+        <artifactId>com.nextbreakpoint.flowless</artifactId>
         <version>1.0.0</version>
     </dependency>
     <dependency>
@@ -96,6 +104,6 @@ If you are using Maven, add one or more of the following dependencies in your PO
     </dependency>
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.flowless</artifactId>
+        <artifactId>com.nextbreakpoint.richtextfx</artifactId>
         <version>1.0.0</version>
     </dependency>
