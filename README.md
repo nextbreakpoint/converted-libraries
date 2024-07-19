@@ -46,9 +46,6 @@ NextBreakpoint Libraries contain copy of binaries files from the following open 
     UndoFX 
     WellbehavedFX
     RichTextFX 
-    Reactive Streams
-    RxJava2
-    RxJavaFX
 
 
 ## Get binaries
@@ -65,21 +62,6 @@ If you are using Maven, this is the list of the libraries which you can add to y
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
         <artifactId>com.nextbreakpoint.common-math3</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.reactive-streams</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.rxjava2</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.rxjavafx</artifactId>
         <version>1.0.0</version>
     </dependency>
     <dependency>

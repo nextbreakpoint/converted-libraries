@@ -27,9 +27,6 @@
     <modules>
         <module>antlr4</module>
         <module>common-math3</module>
-        <module>reactive-streams</module>
-        <module>rxjava2</module>
-        <module>rxjavafx</module>
         <module>reactfx</module>
         <module>flowless</module>
         <module>undofx</module>
