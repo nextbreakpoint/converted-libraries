@@ -1,0 +1,234 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.nextbreakpoint</groupId>
+        <artifactId>com.nextbreakpoint.libraries</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    <artifactId>com.nextbreakpoint.libraries.richtextfx-with-dependencies</artifactId>
+    <packaging>jar</packaging>
+    <properties>
+        <reactfx.version>2.0-M5</reactfx.version>
+        <flowless.version>0.7.3</flowless.version>
+        <undofx.version>2.1.1</undofx.version>
+        <wellbehavedfx.version>0.3.3</wellbehavedfx.version>
+        <richtextfx.version>0.11.3</richtextfx.version>
+    </properties>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>unpack-classes</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.reactfx</groupId>
+                                    <artifactId>reactfx</artifactId>
+                                    <version>${reactfx.version}</version>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.flowless</groupId>
+                                    <artifactId>flowless</artifactId>
+                                    <version>${flowless.version}</version>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.undo</groupId>
+                                    <artifactId>undofx</artifactId>
+                                    <version>${undofx.version}</version>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.wellbehaved</groupId>
+                                    <artifactId>wellbehavedfx</artifactId>
+                                    <version>${wellbehavedfx.version}</version>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                            <excludes>**/*.MF</excludes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+<!--                                <item>-->
+<!--                                    <groupId>org.reactfx</groupId>-->
+<!--                                    <artifactId>reactfx</artifactId>-->
+<!--                                    <version>${reactfx.version}</version>-->
+<!--                                    <classifier>javadoc</classifier>-->
+<!--                                </item>-->
+<!--                                <item>-->
+<!--                                    <groupId>org.fxmisc.flowless</groupId>-->
+<!--                                    <artifactId>flowless</artifactId>-->
+<!--                                    <version>${flowless.version}</version>-->
+<!--                                    <classifier>javadoc</classifier>-->
+<!--                                </item>-->
+<!--                                <item>-->
+<!--                                    <groupId>org.fxmisc.undo</groupId>-->
+<!--                                    <artifactId>undofx</artifactId>-->
+<!--                                    <version>${undofx.version}</version>-->
+<!--                                    <classifier>javadoc</classifier>-->
+<!--                                </item>-->
+<!--                                <item>-->
+<!--                                    <groupId>org.fxmisc.wellbehaved</groupId>-->
+<!--                                    <artifactId>wellbehavedfx</artifactId>-->
+<!--                                    <version>${wellbehavedfx.version}</version>-->
+<!--                                    <classifier>javadoc</classifier>-->
+<!--                                </item>-->
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                    <classifier>javadoc</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unpack-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>unpack</goal>
+                        </goals>
+                        <configuration>
+                            <artifactItems>
+                                <item>
+                                    <groupId>org.reactfx</groupId>
+                                    <artifactId>reactfx</artifactId>
+                                    <version>${reactfx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.flowless</groupId>
+                                    <artifactId>flowless</artifactId>
+                                    <version>${flowless.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.undo</groupId>
+                                    <artifactId>undofx</artifactId>
+                                    <version>${undofx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.wellbehaved</groupId>
+                                    <artifactId>wellbehavedfx</artifactId>
+                                    <version>${wellbehavedfx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                                <item>
+                                    <groupId>org.fxmisc.richtext</groupId>
+                                    <artifactId>richtextfx</artifactId>
+                                    <version>${richtextfx.version}</version>
+                                    <classifier>sources</classifier>
+                                </item>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/sources</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>archive-javadoc</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>javadoc</classifier>
+                            <classesDirectory>${project.build.directory}/javadoc</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>archive-sources</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>sources</classifier>
+                            <classesDirectory>${project.build.directory}/sources</classesDirectory>
+                            <includes>
+                                <include>**/*</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.moditect</groupId>
+                <artifactId>moditect-maven-plugin</artifactId>
+                <version>${moditect-maven-plugin.version}</version>
+                <executions>
+                    <execution>
+                        <id>add-module-info</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>add-module-info</goal>
+                        </goals>
+                        <configuration>
+                            <failOnWarning>false</failOnWarning>
+                            <overwriteExistingFiles>true</overwriteExistingFiles>
+                            <outputDirectory>${project.build.directory}</outputDirectory>
+                            <modules>
+                                <module>
+                                    <artifact>
+                                        <groupId>com.nextbreakpoint</groupId>
+                                        <artifactId>com.nextbreakpoint.libraries.richtextfx-with-dependencies</artifactId>
+                                        <version>${project.version}</version>
+                                    </artifact>
+                                    <moduleInfoSource>
+                                        module com.nextbreakpoint.libraries.richtextfx {
+                                            exports org.fxmisc.richtext;
+                                            exports org.fxmisc.richtext.event;
+                                            exports org.fxmisc.richtext.model;
+                                            exports org.fxmisc.richtext.util;
+                                            exports org.fxmisc.flowless;
+                                            exports org.fxmisc.undo;
+                                            exports org.fxmisc.wellbehaved.event;
+                                            exports org.fxmisc.wellbehaved.event.template;
+                                            exports org.reactfx;
+                                            exports org.reactfx.collection;
+                                            exports org.reactfx.inhibeans;
+                                            exports org.reactfx.inhibeans.binding;
+                                            exports org.reactfx.inhibeans.collection;
+                                            exports org.reactfx.inhibeans.property;
+                                            exports org.reactfx.inhibeans.value;
+                                            exports org.reactfx.util;
+                                            exports org.reactfx.value;
+                                            requires transitive javafx.controls;
+                                        }
+                                    </moduleInfoSource>
+                                </module>
+                            </modules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
