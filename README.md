@@ -39,13 +39,9 @@ NextBreakpoint Libraries is distributed under the terms of BSD 3-Clause License.
 
 NextBreakpoint Libraries contain copy of binaries files from the following open source libraries:
 
-    ANTLR4
-    Apache Common Math3
-    ReactFX
-    Flowless
-    UndoFX 
-    WellbehavedFX
-    RichTextFX 
+    - ANTLR4
+    - Apache Common Math3
+    - RichTextFX and dependencies ReactFX, Flowless, UndoFX, WellbehavedFX
 
 
 ## Get binaries
@@ -59,33 +55,15 @@ If you are using Maven, this is the list of the libraries which you can add to y
         <artifactId>com.nextbreakpoint.antlr4</artifactId>
         <version>1.0.0</version>
     </dependency>
+
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
         <artifactId>com.nextbreakpoint.common-math3</artifactId>
         <version>1.0.0</version>
     </dependency>
+
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.reactfx</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.flowless</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.undofx</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.wellbehavedfx</artifactId>
-        <version>1.0.0</version>
-    </dependency>
-    <dependency>
-        <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.richtextfx</artifactId>
+        <artifactId>com.nextbreakpoint.richtextfx-with-dependencies</artifactId>
         <version>1.0.0</version>
     </dependency>
