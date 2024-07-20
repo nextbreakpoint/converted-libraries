@@ -25,7 +25,7 @@
         <url>scm:git:git@github.com:nextbreakpoint/libraries.git</url>
     </scm>
     <modules>
-        <module>antlr4</module>
+        <module>antlr4-runtime</module>
         <module>common-math3</module>
         <module>richtextfx-with-dependencies</module>
     </modules>
