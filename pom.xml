@@ -45,6 +45,8 @@
         <maven-gpg-plugin.version>3.2.4</maven-gpg-plugin.version>
         <moditect-maven-plugin.version>1.2.2.Final</moditect-maven-plugin.version>
         <nexus-staging-maven-plugin.version>1.7.0</nexus-staging-maven-plugin.version>
+        <github-release-plugin.version>1.6.0</github-release-plugin.version>
+        <github.draft>true</github.draft>
     </properties>
     <build>
         <pluginManagement>
@@ -83,6 +85,11 @@
                     <groupId>org.moditect</groupId>
                     <artifactId>moditect-maven-plugin</artifactId>
                     <version>${moditect-maven-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>de.jutzig</groupId>
+                    <artifactId>github-release-plugin</artifactId>
+                    <version>${github-release-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -155,6 +162,30 @@
                     <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
                 </repository>
             </distributionManagement>
+        </profile>
+        <profile>
+            <id>github</id>
+            <activation>
+                <property>
+                    <name>channel</name>
+                    <value>github</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>de.jutzig</groupId>
+                        <artifactId>github-release-plugin</artifactId>
+                        <configuration>
+                            <releaseName>${project.name} ${project.version}</releaseName>
+                            <tag>v${project.version}</tag>
+                            <failOnExistingRelease>false</failOnExistingRelease>
+                            <overwriteArtifact>false</overwriteArtifact>
+                            <draft>${github.draft}</draft>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
 </project>
