@@ -1,13 +1,13 @@
-# NextBreakpoint Libraries
+# NextBreakpoint Converted Libraries
 
-NextBreakpoint Libraries is an umbrella project for converting to Java modules some Java libraries which are not distributed as modules.
-This is a temporary workaround until the author of the converted library releases a new version which is already a Java module. 
-We don't intend to maintain a modified version of the library, however we want to enable people to use the library as module.
+NextBreakpoint Converted Libraries is a collection of Java modules created converting libraries which are not yet distributed as modules.
+
+Please note the conversion is a temporary workaround until the authors of the libraries release a new version which is a Java module. 
 
 
 ## License
 
-NextBreakpoint Libraries is distributed under the terms of BSD 3-Clause License.
+NextBreakpoint Converted Libraries is distributed under the terms of BSD 3-Clause License.
 
     Copyright (c) 2024, Andrea Medeghini
     All rights reserved.
@@ -37,33 +37,33 @@ NextBreakpoint Libraries is distributed under the terms of BSD 3-Clause License.
     OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
     OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-NextBreakpoint Libraries contain copy of binaries files from the following open source libraries:
+NextBreakpoint Converted Libraries contain copy of binaries files from the following open source libraries:
 
-    - ANTLR4
+    - ANTLR4 Runtime
     - Apache Common Math3
     - RichTextFX and dependencies ReactFX, Flowless, UndoFX, WellbehavedFX
 
 
 ## Get binaries
 
-NextBreakpoint Libraries are available in Maven Central Repository and [GitHub](https://github.com/nextbreakpoint/common).
+NextBreakpoint Converted Libraries is available in Maven Central Repository and [GitHub](https://github.com/nextbreakpoint/converted-libraries).
 
-If you are using Maven, this is the list of the libraries which you can add to your POM:
+If you are using Maven, this is the list of the dependencies you can add to your POM to start using the converted libraries:
 
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.antlr4</artifactId>
+        <artifactId>com.nextbreakpoint.convertedlibraries.antlr4-runtime</artifactId>
         <version>1.0.0</version>
     </dependency>
 
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.common-math3</artifactId>
+        <artifactId>com.nextbreakpoint.convertedlibraries.commons-math3</artifactId>
         <version>1.0.0</version>
     </dependency>
 
     <dependency>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.richtextfx-with-dependencies</artifactId>
+        <artifactId>com.nextbreakpoint.convertedlibraries.richtextfx-with-dependencies</artifactId>
         <version>1.0.0</version>
     </dependency>
