@@ -5,6 +5,7 @@
     <artifactId>com.nextbreakpoint.convertedlibraries</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
+    <name>NextBreakpoint Converted Libraries</name>
     <description>Converted Libraries is a collection of Java modules created converting libraries which are not yet distributed as modules</description>
     <url>https://github.com/nextbreakpoint/libraries</url>
     <licenses>
