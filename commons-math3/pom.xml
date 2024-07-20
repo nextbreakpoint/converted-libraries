@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.libraries</artifactId>
+        <artifactId>com.nextbreakpoint.convertedlibraries</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>com.nextbreakpoint.libraries.common-math3</artifactId>
+    <artifactId>com.nextbreakpoint.convertedlibraries.commons-math3</artifactId>
     <packaging>jar</packaging>
     <properties>
         <common-math3.version>3.6.1</common-math3.version>
@@ -126,11 +126,11 @@
                                 <module>
                                     <artifact>
                                         <groupId>com.nextbreakpoint</groupId>
-                                        <artifactId>com.nextbreakpoint.libraries.common-math3</artifactId>
+                                        <artifactId>com.nextbreakpoint.convertedlibraries.commons-math3</artifactId>
                                         <version>${project.version}</version>
                                     </artifact>
                                     <moduleInfoSource>
-                                        module com.nextbreakpoint.libraries.common.math3 {
+                                        module com.nextbreakpoint.convertedlibraries.commons.math3 {
                                             exports org.apache.commons.math3;
                                             exports org.apache.commons.math3.analysis;
                                             exports org.apache.commons.math3.analysis.differentiation;

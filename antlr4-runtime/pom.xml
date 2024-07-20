@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.nextbreakpoint</groupId>
-        <artifactId>com.nextbreakpoint.libraries</artifactId>
+        <artifactId>com.nextbreakpoint.convertedlibraries</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>com.nextbreakpoint.libraries.antlr4-runtime</artifactId>
+    <artifactId>com.nextbreakpoint.convertedlibraries.antlr4-runtime</artifactId>
     <packaging>jar</packaging>
     <properties>
         <antlr4.version>4.13.1</antlr4.version>
@@ -125,11 +125,11 @@
                                 <module>
                                     <artifact>
                                         <groupId>com.nextbreakpoint</groupId>
-                                        <artifactId>com.nextbreakpoint.libraries.antlr4-runtime</artifactId>
+                                        <artifactId>com.nextbreakpoint.convertedlibraries.antlr4-runtime</artifactId>
                                         <version>${project.version}</version>
                                     </artifact>
                                     <moduleInfoSource>
-                                        module com.nextbreakpoint.libraries.antlr4.runtime {
+                                        module com.nextbreakpoint.convertedlibraries.antlr4.runtime {
                                             exports org.antlr.v4.runtime;
                                             exports org.antlr.v4.runtime.atn;
                                             exports org.antlr.v4.runtime.dfa;
