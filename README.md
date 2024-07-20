@@ -1,8 +1,8 @@
-# NextBreakpoint Libraries
+# NextBreakpoint Converted Libraries
 
 NextBreakpoint Converted Libraries is a collection of Java modules created converting libraries which are not yet distributed as modules.
 
-The conversion is a temporary workaround until the authors of the libraries release a new version which is a Java module. 
+Please note the conversion is a temporary workaround until the authors of the libraries release a new version which is a Java module. 
 
 
 ## License
@@ -46,7 +46,7 @@ NextBreakpoint Converted Libraries contain copy of binaries files from the follo
 
 ## Get binaries
 
-NextBreakpoint Converted Libraries is available in Maven Central Repository and [GitHub](https://github.com/nextbreakpoint/common).
+NextBreakpoint Converted Libraries is available in Maven Central Repository and [GitHub](https://github.com/nextbreakpoint/converted-libraries).
 
 If you are using Maven, this is the list of the dependencies you can add to your POM to start using the converted libraries:
 
